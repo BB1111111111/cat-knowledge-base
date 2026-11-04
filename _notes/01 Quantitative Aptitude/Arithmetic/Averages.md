@@ -15,6 +15,7 @@ tags:
 
 ## Concepts
 
+<!-- CAT-UPDATE-ID: 6bcf9af71495d346 -->
 ### Average as equal sharing
 
 The arithmetic average is the sum of the observations divided by their count:
@@ -34,7 +35,72 @@ The total-sum method is useful when observations are added to or removed from a 
 > [!abstract] Core idea
 > Convert an average into a total, update the total and count, and then calculate the new average.
 
-<!-- CAT-UPDATE-ID: 9166c0bc7c561b93 -->
+### Average adjustment
+
+When one value is added to a group, adjust the old average by the difference between the new value and the old average.
+
+**Example:** The average of 8 numbers is 25. A ninth number, 34, is added.
+
+Original total:
+
+$$
+8\times25=200
+$$
+
+New total:
+
+$$
+200+34=234
+$$
+
+New average:
+
+$$
+\frac{234}{9}=\boxed{26}
+$$
+
+**Shortcut — average adjustment**
+
+$$
+\boxed{\text{New average}=\text{Old average}+\frac{\text{New value}-\text{Old average}}{\text{New count}}}
+$$
+
+$$
+25+\frac{34-25}{9}=\boxed{26}
+$$
+
+The denominator is the new group size.
+
+### Deviation method
+
+Instead of adding large values, choose a convenient assumed average and add the deviations from it.
+
+**Example:** Find the average of 48, 52, 55, 60 and 65. Assume 50.
+
+| Number | Deviation from 50 |
+|---:|---:|
+| 48 | −2 |
+| 52 | +2 |
+| 55 | +5 |
+| 60 | +10 |
+| 65 | +15 |
+| **Total** | **+30** |
+
+Therefore:
+
+$$
+\text{Actual average}=50+\frac{30}{5}=\boxed{56}
+$$
+
+**General formula**
+
+$$
+\boxed{\text{Actual average}=\text{Assumed average}+\frac{\text{Sum of deviations}}{n}}
+$$
+
+Choose an assumed average close to the given values to keep the deviations small.
+<!-- /CAT-UPDATE-ID: 6bcf9af71495d346 -->
+
 ## Average adjustment
 
 When one value is added to a group, adjust the old average by the difference between the new value and the old average.
@@ -163,6 +229,17 @@ This is the arithmetic mean. Identify whether distance or time is equal before c
 
 ## Formulas / rules
 
+<!-- CAT-UPDATE-ID: 36f5eb381c077685 -->
+### Core average formulas
+
+$$
+\text{Average}=\frac{\text{Total}}{\text{Number of observations}}
+$$
+
+$$
+\text{Total}=\text{Average}\times\text{Number of observations}
+$$
+
 ### When a new observation joins
 
 If n observations have average A and a new value x joins:
@@ -171,15 +248,27 @@ $$
 \text{New average}=\frac{nA+x}{n+1}
 $$
 
+Equivalent adjustment form:
+
+$$
+\boxed{\text{New average}=A+\frac{x-A}{n+1}}
+$$
+
 If the average remains unchanged:
 
 $$
-\frac{nA+x}{n+1}=A
+\frac{nA+x}{n+1}=A\Rightarrow x=A
 $$
 
-Solving gives x = A. Thus, the added value must equal the old average.
+Thus, if one new observation joins without changing the average, that observation must equal the old average.
 
-<!-- CAT-UPDATE-ID: b458c53b75f456a7 -->
+### Deviation formula
+
+$$
+\boxed{\text{Actual average}=\text{Assumed average}+\frac{\sum \text{deviations}}{n}}
+$$
+<!-- /CAT-UPDATE-ID: 36f5eb381c077685 -->
+
 ## Quick formula sheet
 
 | Situation | Formula |
@@ -199,11 +288,40 @@ Solving gives x = A. Thus, the added value must equal the old average.
 
 ## Worked examples
 
-### Trick 4. Average remains unchanged
+<!-- CAT-UPDATE-ID: efa9792632e7d6ed -->
+### Example 1 — Average adjustment
 
-**Question**
+The average of 8 numbers is 25. If one more number, 34, is added, find the new average.
 
-If the average of 10 students is 60, and a new student joins without changing the average, what must be the new student's marks?
+**Traditional method**
+
+Original total:
+
+$$
+8\times25=200
+$$
+
+New total:
+
+$$
+200+34=234
+$$
+
+New average:
+
+$$
+\frac{234}{9}=\boxed{26}
+$$
+
+**Shortcut**
+
+$$
+25+\frac{34-25}{9}=\boxed{26}
+$$
+
+### Example 2 — Average remains unchanged
+
+The average of 10 students is 60. A new student joins without changing the average. Find the new student's marks.
 
 **Traditional method**
 
@@ -222,20 +340,22 @@ $$
 New student's marks:
 
 $$
-660-600=60
+660-600=\boxed{60}
 $$
 
-> [!success] Answer
-> **60 marks.**
+**Shortcut:** If adding one value leaves the average unchanged, the added value must equal the old average.
 
-**Shortcut**
+### Example 3 — Deviation method
 
-If adding one value leaves the average unchanged, the added value must equal the old average. Therefore, the new student's marks are **60**.
+Find the average of 48, 52, 55, 60 and 65.
 
-> [!tip] CAT shortcut
-> No total calculation is necessary when the average is explicitly unchanged.
+Assume 50. The deviations are −2, +2, +5, +10 and +15. Their sum is +30.
 
-<!-- CAT-UPDATE-ID: 301904aeb5f0f651 -->
+$$
+\text{Average}=50+\frac{30}{5}=\boxed{56}
+$$
+<!-- /CAT-UPDATE-ID: efa9792632e7d6ed -->
+
 ## Worked examples — mixture and average-speed applications
 
 ### Adding water to a solution
@@ -257,11 +377,15 @@ For equal distances, more time is spent at the lower speed, so use the harmonic 
 
 ## Common traps
 
-- Do not confuse the average with the total.
-- When the number of observations changes, update the count.
-- The unchanged-average shortcut does not mean the total remains unchanged.
+<!-- CAT-UPDATE-ID: f8ce93ac22eca3af -->
+- **Do not confuse average with total.** A change in the average does not directly tell you the change in the total unless the group size is known.
+- **Update the count.** When one observation joins n existing observations, the new count is n + 1.
+- **Use the new group size** in the average-adjustment shortcut.
+- **Deviation signs matter.** Values below the assumed average have negative deviations; values above it have positive deviations.
+- **Average unchanged does not mean total unchanged.** If one observation joins, the total rises by exactly the old average.
+- **Choose a convenient assumed average** to keep deviations small and calculations quick.
+<!-- /CAT-UPDATE-ID: f8ce93ac22eca3af -->
 
-<!-- CAT-UPDATE-ID: 5b5d7846f8caa02e -->
 ## Common CAT traps
 
 - **Wrong denominator in average adjustment:** after adding one observation, divide the revised total by n + 1.
@@ -278,11 +402,14 @@ For equal distances, more time is spent at the lower speed, so use the harmonic 
 
 ## Practice and mistakes
 
+<!-- CAT-UPDATE-ID: fd9f373d14987dff -->
 - [ ] I can convert an average into a total.
-- [ ] I update the count when an observation joins or leaves.
-- [ ] I can identify the value that preserves the average.
+- [ ] I update the observation count when a value joins or leaves.
+- [ ] I can use the average-adjustment shortcut.
+- [ ] I can identify the new value when the average remains unchanged.
+- [ ] I can use positive and negative deviations correctly.
+<!-- /CAT-UPDATE-ID: fd9f373d14987dff -->
 
-<!-- CAT-UPDATE-ID: c7e4e026e2dc1b59 -->
 ## CAT practice — detailed solutions and shortcuts
 
 ### Question 23 — Repeated replacement
@@ -414,5 +541,8 @@ $$\\text{Average speed}=120/(2+1)=\\boxed{40\\text{ km/h}}$$
 
 ## Related notes
 
-- [[Percentages]]
+<!-- CAT-UPDATE-ID: a2a77200c7538b23 -->
 - [[Ratios & Proportions]]
+- [[Mixtures & Alligation]]
+- [[Time, Speed & Distance]]
+<!-- /CAT-UPDATE-ID: a2a77200c7538b23 -->
