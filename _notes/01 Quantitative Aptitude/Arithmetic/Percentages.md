@@ -175,6 +175,59 @@ $$
 1.25\times0.80=1
 $$
 
+### Q11. Reverse percentage comparison — salary
+
+**Question**
+
+A's salary is 25% higher than B's salary. By what percentage is B's salary lower than A's?
+
+**Concept being tested**
+
+The percentage increase from B to A is measured on B. The reverse decrease from A to B is measured on A. Since the reference base changes, the reverse percentage is not 25%.
+
+**Step-by-step solution**
+
+Assume B's salary is 100.
+
+A's salary is:
+
+$$
+100\times1.25=125
+$$
+
+The difference between the salaries is:
+
+$$
+125-100=25
+$$
+
+The question asks how much lower B is as a percentage of A. Therefore, use A's salary as the denominator:
+
+$$
+\frac{125-100}{125}\times100
+=\frac{25}{125}\times100
+=20\%
+$$
+
+> [!success] Final answer
+> **B's salary is 20% lower than A's.**
+
+> [!warning] Common trap
+> Do not answer 25%. The original increase is based on B, whereas the requested decrease is based on A.
+
+> [!tip] CAT shortcut
+> If A is x% more than B, then B is:
+
+$$
+\frac{x}{100+x}\times100\%
+$$
+
+less than A. For x = 25:
+
+$$
+\frac{25}{125}\times100=20\%
+$$
+
 ---
 
 ## Part E. Percentages revision sheet
